@@ -29,7 +29,7 @@ public class GoogleIOView extends RelativeLayout {
 
     public GoogleIOView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        TypedArray typeArray = context.obtainStyledAttributes(attrs, R.styleable.ParallaxScroll);
+        TypedArray typeArray = context.obtainStyledAttributes(attrs, R.styleable.GooleIOView);
         mColor = typeArray.getColor(R.styleable.GooleIOView_parallax_color, 0xff66ccff);
         typeArray.recycle();
     }
