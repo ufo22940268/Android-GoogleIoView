@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="header_container" type="id" />
+    <item name="header_content" type="id" />
+    <item name="header_layer" type="id" />
+</resources>
