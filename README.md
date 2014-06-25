@@ -4,7 +4,7 @@
 
 #Screenshot
 
-![./slide.gif](./slide.gif)
+![./slide.gif](http://ww1.sinaimg.cn/large/3f6e95acgw1ehqimoxjgsg20fm0i5b29.gif)
 
 #下载
 
