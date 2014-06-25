@@ -1,4 +1,4 @@
-package com.nirhart.parallaxscroll.views;
+package me.biubiubiu.iolistview.library;
 
 import android.content.Context;
 import android.util.AttributeSet;

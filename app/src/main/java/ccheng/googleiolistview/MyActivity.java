@@ -5,12 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
-
-import com.nirhart.parallaxscroll.views.ParallaxScrollView;
 
 import me.biubiubiu.iolistview.library.IOListView;
-
+import me.biubiubiu.iolistview.library.ParallaxScrollView;
 
 public class MyActivity extends Activity {
 
