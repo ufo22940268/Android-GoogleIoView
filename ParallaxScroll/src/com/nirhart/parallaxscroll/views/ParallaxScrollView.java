@@ -4,10 +4,6 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +24,7 @@ public class ParallaxScrollView extends ScrollView {
     private ViewGroup mHeaderContainer;
     private View mColorLayer;
     private View mHeaderContent;
-    private View mStickyHeaderContent;
+    private OnEnableStickyViewListener onEnableStickyViewListener;
 
     public ParallaxScrollView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -67,14 +63,11 @@ public class ParallaxScrollView extends ScrollView {
         mHeaderContent = LayoutInflater.from(getContext()).inflate(R.layout.header_content, this, false);
         ViewGroup headerContentContainer = (ViewGroup) findViewById(R.id.header_content_container);
         headerContentContainer.addView(mHeaderContent);
-
-        mStickyHeaderContent = LayoutInflater.from(getContext()).inflate(R.layout.header_content, this, false);
-        ((ViewGroup)getChildAt(0)).addView(mStickyHeaderContent);
     }
 
     private void makeViewsParallax() {
         if (getChildCount() > 0 && getChildAt(0) instanceof ViewGroup) {
-            ViewGroup viewsHolder = (ViewGroup) ((ViewGroup)((ViewGroup) getChildAt(0)).getChildAt(0)).getChildAt(0);
+            ViewGroup viewsHolder = (ViewGroup)((ViewGroup) getChildAt(0)).getChildAt(0);
             int numOfParallaxViews = Math.min(this.numOfParallaxViews, viewsHolder.getChildCount());
             for (int i = 0; i < numOfParallaxViews; i++) {
                 View child = viewsHolder.getChildAt(i);
@@ -92,8 +85,10 @@ public class ParallaxScrollView extends ScrollView {
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
 
+
         int headerHeight = mHeaderContainer.getHeight();
         headerHeight = headerHeight - mHeaderContent.getHeight();
+
 
         System.out.println("t = " + t);
         float factor = parallaxFactor;
@@ -108,10 +103,31 @@ public class ParallaxScrollView extends ScrollView {
             p = 1;
         }
 
+        if (p == 1) {
+            enableSticky(true);
+        } else {
+            enableSticky(false);
+        }
+
         int i = (int) (0xff * p);
         System.out.println("i = " + i);
         int color = (i << 24) + 0x66ccff;
         mColorLayer.setBackgroundColor(color);
+    }
+
+    private void enableSticky(boolean b) {
+//        mStickyHeaderContent.setVisibility(b ? View.VISIBLE : View.GONE);
+        if (onEnableStickyViewListener != null) {
+            onEnableStickyViewListener.onEnableStikyView(b);
+        }
+    }
+
+    public OnEnableStickyViewListener getOnEnableStickyViewListener() {
+        return onEnableStickyViewListener;
+    }
+
+    public void setOnEnableStickyViewListener(OnEnableStickyViewListener onEnableStickyViewListener) {
+        this.onEnableStickyViewListener = onEnableStickyViewListener;
     }
 
     protected class ScrollViewParallaxedItem extends ParallaxedView {
@@ -125,5 +141,9 @@ public class ParallaxScrollView extends ScrollView {
             view.offsetTopAndBottom((int) offset - lastOffset);
             lastOffset = (int) offset;
         }
+    }
+
+    public interface OnEnableStickyViewListener {
+        public void onEnableStikyView(boolean enable);
     }
 }

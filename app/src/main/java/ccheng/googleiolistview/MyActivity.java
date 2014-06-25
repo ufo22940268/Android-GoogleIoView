@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+
+import com.nirhart.parallaxscroll.views.ParallaxScrollView;
 
 import me.biubiubiu.iolistview.library.IOListView;
 
@@ -12,11 +15,26 @@ import me.biubiubiu.iolistview.library.IOListView;
 public class MyActivity extends Activity {
 
     private IOListView mListView;
+    private View mStickyView;
+    private ParallaxScrollView mParallaxView;
+    private int color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+
+        mParallaxView = (ParallaxScrollView) findViewById(R.id.parallax);
+        mStickyView = findViewById(R.id.sticky_header_content);
+        mStickyView.setVisibility(View.GONE);
+        mStickyView.setBackgroundColor(getColor());
+        mParallaxView.setOnEnableStickyViewListener(new ParallaxScrollView.OnEnableStickyViewListener() {
+            @Override
+            public void onEnableStikyView(boolean enable) {
+                View v = findViewById(R.id.sticky_header_content);
+                v.setVisibility(enable ? View.VISIBLE : View.GONE);
+            }
+        });
     }
 
 
@@ -37,5 +55,9 @@ public class MyActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public int getColor() {
+        return 0xff66ccff;
     }
 }
