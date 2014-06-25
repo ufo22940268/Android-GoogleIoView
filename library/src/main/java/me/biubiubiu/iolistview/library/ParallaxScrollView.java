@@ -59,9 +59,9 @@ public class ParallaxScrollView extends ScrollView {
                         ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mHeaderContainer.addView(mColorLayer, 2);
 
-        mHeaderContent = LayoutInflater.from(getContext()).inflate(R.layout.header_content, this, false);
+        setHeaderContent(LayoutInflater.from(getContext()).inflate(R.layout.header_content, this, false));
         ViewGroup headerContentContainer = (ViewGroup) findViewById(R.id.header_content_container);
-        headerContentContainer.addView(mHeaderContent);
+        headerContentContainer.addView(getHeaderContent());
     }
 
     private void makeViewsParallax() {
@@ -86,7 +86,7 @@ public class ParallaxScrollView extends ScrollView {
 
 
         int headerHeight = mHeaderContainer.getHeight();
-        headerHeight = headerHeight - mHeaderContent.getHeight();
+        headerHeight = headerHeight - getHeaderContent().getHeight();
 
 
         System.out.println("t = " + t);
@@ -134,6 +134,14 @@ public class ParallaxScrollView extends ScrollView {
 
     public void setColor(int c) {
         mColor = c;
+    }
+
+    public View getHeaderContent() {
+        return mHeaderContent;
+    }
+
+    public void setHeaderContent(View headerContent) {
+        mHeaderContent = headerContent;
     }
 
     protected class ScrollViewParallaxedItem extends ParallaxedView {

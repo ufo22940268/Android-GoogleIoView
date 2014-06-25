@@ -2,12 +2,12 @@ package me.biubiubiu.iolistview.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 /**
  * Created by ccheng on 6/25/14.
@@ -18,6 +18,7 @@ public class GoogleIOView extends RelativeLayout {
     private View mStickyView;
     private View mScrollContainer;
     private ParallaxScrollView mParallaxView;
+    private ImageView mBackgroundImage;
 
     public GoogleIOView(Context context) {
         super(context);
@@ -44,6 +45,7 @@ public class GoogleIOView extends RelativeLayout {
         addView(mScrollContainer);
         mParallaxView = (ParallaxScrollView) mScrollContainer.findViewById(R.id.parallax);
         mParallaxView.setColor(getColor());
+        mBackgroundImage = (ImageView) mScrollContainer.findViewById(R.id.background_image);
 
         mStickyView = layoutInflater.inflate(R.layout.io_sticky_view, this, false);
         mStickyView.setVisibility(View.GONE);
@@ -60,5 +62,14 @@ public class GoogleIOView extends RelativeLayout {
 
     public int getColor() {
         return mColor;
+    }
+
+    public ImageView getImageBackground() {
+        return mBackgroundImage;
+    }
+
+    public void setTitle(String title) {
+        ((TextView)mStickyView.findViewById(R.id.header_content)).setText(title);
+        ((TextView)mParallaxView.getHeaderContent().findViewById(R.id.header_content)).setText(title);
     }
 }
