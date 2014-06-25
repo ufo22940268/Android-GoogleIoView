@@ -22,11 +22,16 @@
                 android:src="@drawable/pic"
                 />
 
-            <FrameLayout
-                android:id="@+id/header_layer"
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/session_detail_photo_gradient"
+                />
+
+            <FrameLayout
+                android:id="@+id/header_content_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 >
 
             </FrameLayout>

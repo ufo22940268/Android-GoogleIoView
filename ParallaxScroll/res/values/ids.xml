@@ -2,5 +2,5 @@
 <resources>
     <item name="header_container" type="id" />
     <item name="header_content" type="id" />
-    <item name="header_layer" type="id" />
+    <item name="header_content_container" type="id" />
 </resources>
