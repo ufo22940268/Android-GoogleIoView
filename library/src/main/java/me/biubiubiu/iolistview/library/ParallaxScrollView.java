@@ -23,6 +23,7 @@ public class ParallaxScrollView extends ScrollView {
     private View mColorLayer;
     private View mHeaderContent;
     private OnEnableStickyViewListener onEnableStickyViewListener;
+    private int mColor;
 
     public ParallaxScrollView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -109,12 +110,15 @@ public class ParallaxScrollView extends ScrollView {
 
         int i = (int) (0xff * p);
         System.out.println("i = " + i);
-        int color = (i << 24) + 0x66ccff;
+        int color = (i << 24) + getColor();
         mColorLayer.setBackgroundColor(color);
     }
 
+    private int getColor() {
+        return mColor & 0x00ffffff;
+    }
+
     private void enableSticky(boolean b) {
-//        mStickyHeaderContent.setVisibility(b ? View.VISIBLE : View.GONE);
         if (onEnableStickyViewListener != null) {
             onEnableStickyViewListener.onEnableStikyView(b);
         }
@@ -126,6 +130,10 @@ public class ParallaxScrollView extends ScrollView {
 
     public void setOnEnableStickyViewListener(OnEnableStickyViewListener onEnableStickyViewListener) {
         this.onEnableStickyViewListener = onEnableStickyViewListener;
+    }
+
+    public void setColor(int c) {
+        mColor = c;
     }
 
     protected class ScrollViewParallaxedItem extends ParallaxedView {

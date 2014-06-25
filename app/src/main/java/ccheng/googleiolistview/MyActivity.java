@@ -6,12 +6,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import me.biubiubiu.iolistview.library.IOListView;
+import me.biubiubiu.iolistview.library.GoogleIOView;
 import me.biubiubiu.iolistview.library.ParallaxScrollView;
 
 public class MyActivity extends Activity {
 
-    private IOListView mListView;
+    private GoogleIOView mListView;
     private View mStickyView;
     private ParallaxScrollView mParallaxView;
     private int color;
@@ -21,17 +21,17 @@ public class MyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        mParallaxView = (ParallaxScrollView) findViewById(R.id.parallax);
-        mStickyView = findViewById(R.id.sticky_header_content);
-        mStickyView.setVisibility(View.GONE);
-        mStickyView.setBackgroundColor(getColor());
-        mParallaxView.setOnEnableStickyViewListener(new ParallaxScrollView.OnEnableStickyViewListener() {
-            @Override
-            public void onEnableStikyView(boolean enable) {
-                View v = findViewById(R.id.sticky_header_content);
-                v.setVisibility(enable ? View.VISIBLE : View.GONE);
-            }
-        });
+//        mParallaxView = (ParallaxScrollView) findViewById(R.id.parallax);
+//        mStickyView = findViewById(R.id.sticky_header_content);
+//        mStickyView.setVisibility(View.GONE);
+//        mStickyView.setBackgroundColor(getColor());
+//        mParallaxView.setOnEnableStickyViewListener(new ParallaxScrollView.OnEnableStickyViewListener() {
+//            @Override
+//            public void onEnableStikyView(boolean enable) {
+//                View v = findViewById(R.id.sticky_header_content);
+//                v.setVisibility(enable ? View.VISIBLE : View.GONE);
+//            }
+//        });
     }
 
 
