@@ -24,7 +24,7 @@ public class GoogleIOView extends RelativeLayout {
     }
 
     public GoogleIOView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public GoogleIOView(Context context, AttributeSet attrs, int defStyle) {
