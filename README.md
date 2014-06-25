@@ -12,16 +12,16 @@
         app:parallax_color="#66ccff"
         />
         
-##设置背景图片
+###设置背景图片
 
         GoogleIOView ioView = (GoogleIOView) findViewById(R.id.io);
         ioView.getImageBackground().setImageResource(R.drawable.go_lang_item);
         
-##设置背景颜色
+###设置背景颜色
 
         app:parallax_color="#66ccff"
 
-##设置标题内容
+###设置标题内容
 
         ioView.setTitle("hongbosb");
 
