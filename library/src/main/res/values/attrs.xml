@@ -8,4 +8,7 @@
         <attr name="circular_parallax" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="GooleIOView">
+        <attr name="parallax_color" format="color" />
+    </declare-styleable>
 </resources>

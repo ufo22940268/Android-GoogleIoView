@@ -1,6 +1,7 @@
 package me.biubiubiu.iolistview.library;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.RelativeLayout;
  */
 public class GoogleIOView extends RelativeLayout {
 
+    private int mColor;
     private View mStickyView;
     private View mScrollContainer;
     private ParallaxScrollView mParallaxView;
@@ -27,6 +29,9 @@ public class GoogleIOView extends RelativeLayout {
 
     public GoogleIOView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        TypedArray typeArray = context.obtainStyledAttributes(attrs, R.styleable.ParallaxScroll);
+        mColor = typeArray.getColor(R.styleable.GooleIOView_parallax_color, 0xff66ccff);
+        typeArray.recycle();
     }
 
     @Override
@@ -54,6 +59,6 @@ public class GoogleIOView extends RelativeLayout {
     }
 
     public int getColor() {
-        return Color.RED;
+        return mColor;
     }
 }
