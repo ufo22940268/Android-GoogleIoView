@@ -4,6 +4,12 @@
 
 #使用方法
 
+###在gradle.build中加入
+
+    compile 'me.biubiubiu.googleioview:library:1.0'
+
+###在xml中配置
+
     <me.biubiubiu.iolistview.library.GoogleIOView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
